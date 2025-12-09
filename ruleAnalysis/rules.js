@@ -52,4 +52,31 @@ export const rules = [
     description: "Concatenating user input into shell commands enables command injection.",
     recommendation: "Avoid command construction via concatenation. Use arguments safely.",
   },
+
+  {
+    id: "JS-WEAKCRYPTO-007",
+    name: "Weak cryptographic hashing algorithm (MD5/SHA1)",
+    severity: "High",
+    regex: /\bcrypto\.createHash\s*\(\s*["'](md5|sha1)["']\s*\)/i,
+    description: "MD5 and SHA-1 are considered cryptographically broken and unsafe.",
+    recommendation: "Use SHA-256 or stronger hashing algorithms. For passwords, use bcrypt or Argon2.",
+  },
+
+  {
+    id: "JS-INSECURECORS-008",
+    name: "Insecure CORS configuration (Wildcard Origin)",
+    severity: "High",
+    regex: /(origin|Access-Control-Allow-Origin)\s*[:=]\s*["']\*["']/i,
+    description: "Wildcard CORS allows any domain to access your API, creating a major security risk.",
+    recommendation: "Replace '*' with a strict whitelist of trusted origins.",
+  },
+
+  {
+    id: "JS-REDOS-009",
+    name: "Potential ReDoS (Catastrophic Backtracking Regex)",
+    severity: "Medium",
+    regex: /\((?:[^()]*\+){2,}[^()]*\)/,
+    description: "Nested quantifiers in regex can cause catastrophic backtracking and freeze the application.",
+    recommendation: "Avoid nested quantifiers. Simplify the regex or use non-backtracking techniques.",
+  }
 ];
