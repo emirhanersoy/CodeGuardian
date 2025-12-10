@@ -14,14 +14,14 @@ pnpm-debug.log*
 .env.production.local
 .env.test.local
 
-# Next.js build output
-frontend/.next/
-frontend/out/
+# # Next.js build output
+# frontend/.next/
+# frontend/out/
 
-# Backend build output
-backend/dist/
-backend/build/
-backend/out/
+# # Backend build output
+# backend/dist/
+# backend/build/
+# backend/out/
 
 # Logs
 logs/
