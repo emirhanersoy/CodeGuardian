@@ -1,3 +1,230 @@
-body {
-  font-family: Arial, sans-serif;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Security-focused dark color scheme */
+  --background: 270 30% 8%;
+  --foreground: 270 30% 95%;
+  --card: 270 30% 12%;
+  --card-foreground: 270 30% 95%;
+  --popover: 270 30% 14%;
+  --popover-foreground: 270 30% 95%;
+  --primary: 270 50% 60%;
+  --primary-foreground: 270 30% 8%;
+  --secondary: 220 50% 50%;
+  --secondary-foreground: 270 30% 8%;
+  --muted: 270 20% 25%;
+  --muted-foreground: 270 30% 70%;
+  --accent: 270 70% 65%;
+  --accent-foreground: 270 30% 8%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 270 30% 8%;
+  --border: 270 20% 20%;
+  --input: 270 30% 15%;
+  --ring: 270 50% 60%;
+  --chart-1: 270 50% 60%;
+  --chart-2: 220 50% 50%;
+  --chart-3: 270 70% 65%;
+  --chart-4: 0 84% 60%;
+  --chart-5: 41 96% 56%;
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: 270 30% 8%;
+  --foreground: 270 30% 95%;
+  --card: 270 30% 12%;
+  --card-foreground: 270 30% 95%;
+  --popover: 270 30% 14%;
+  --popover-foreground: 270 30% 95%;
+  --primary: 270 50% 60%;
+  --primary-foreground: 270 30% 8%;
+  --secondary: 220 50% 50%;
+  --secondary-foreground: 270 30% 8%;
+  --muted: 270 20% 25%;
+  --muted-foreground: 270 30% 70%;
+  --accent: 270 70% 65%;
+  --accent-foreground: 270 30% 8%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 270 30% 8%;
+  --border: 270 20% 20%;
+  --input: 270 30% 15%;
+  --ring: 270 50% 60%;
+  --chart-1: 270 50% 60%;
+  --chart-2: 220 50% 50%;
+  --chart-3: 270 70% 65%;
+  --chart-4: 0 84% 60%;
+  --chart-5: 41 96% 56%;
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Security-themed animations */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 30px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.scan-line {
+  animation: scan-line 2s linear infinite;
+}
+
+.float-up {
+  animation: float-up 0.6s ease-out;
+}
+
+textarea {
+  @apply font-mono;
+}
+
+/* Custom Scrollbar Styles - Mor/Siyah Tema */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(270 50% 40% / 0.6) hsl(270 30% 15% / 0.3);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: hsl(270 30% 15% / 0.3);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: hsl(270 50% 40% / 0.6);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: hsl(270 50% 50% / 0.8);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: hsl(270 70% 60% / 0.9);
+  background-clip: padding-box;
+}
+
+/* Dark mode için daha koyu scrollbar */
+.dark * {
+  scrollbar-color: hsl(270 50% 50% / 0.7) hsl(270 30% 12% / 0.5);
+}
+
+.dark *::-webkit-scrollbar-track {
+  background: hsl(270 30% 12% / 0.5);
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background: hsl(270 50% 50% / 0.7);
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
+  background: hsl(270 50% 60% / 0.85);
+}
+
+.dark *::-webkit-scrollbar-thumb:active {
+  background: hsl(270 70% 65% / 0.95);
 }
