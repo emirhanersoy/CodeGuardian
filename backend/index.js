@@ -7,15 +7,24 @@ app.use(express.json());
 
 const { analyzeCode, generateJSONReport } = require('./ruleAnalysis/engine');
 
-//add input validation for security and to make sure the input is in string format before feeding to engine
-//make sure the input is not null or undefined
 //something else can be added to keep the responses
-//add error handling in the next sprint
+//improve error handling in the next sprint
+
+function analyzeSourceCode(sourceCode) {
+  const issues = analyzeCode(sourceCode);
+  return generateJSONReport(issues);
+}
 
 app.post('/api/analyze', (req, res) => {
-  const sourceCode = req.body.sourceCode || '';
-  const issues = analyzeCode(sourceCode);
-  const report = generateJSONReport(issues);
+  const sourceCode = req.body.sourceCode;
+
+  if (!sourceCode || typeof sourceCode !== "string") {
+    return res.status(400).json({ 
+      error: "SourceCode must be a non-empty string" 
+    });
+  }
+
+  const report = analyzeSourceCode(sourceCode);
   res.json(report);
 });
 
