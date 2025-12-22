@@ -27,3 +27,4 @@ Backend'in `http://localhost:8080` adresinde çalışıyor olması gerekmektedir
 - Güvenlik sorunlarının listelenmesi
 - Sorun detayları (severity, açıklama, öneriler)
 
+
