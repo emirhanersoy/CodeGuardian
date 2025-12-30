@@ -18,4 +18,4 @@ This project was developed as part of a Secure Coding and Scripting Languages co
 Its goal is to demonstrate preventive security practices and real-time vulnerability awareness in software development.
 
 ## Created by 
-- [Emirhan Ersoy](https://github.com/emirhanersoy), [Aleyna Benzer](https://github.com/Aleyna-B), [Mert Ayrancı](https://github.com/Mert-Ayranci) and [Nuraiym Syrgakovna Kerimova](https://github.com/diarwayen)
+- [Emirhan Ersoy](https://github.com/emirhanersoy), [Aleyna Benzer](https://github.com/Aleyna-B), [Mert Ayrancı](https://github.com/Mert-Ayranci) and [Nuraiym Syrgakovna Kerimova].
